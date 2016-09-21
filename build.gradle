@@ -36,3 +36,14 @@ intellij {
     plugins = []
     pluginName = 'de.ibacg.intellij.folding.doublecurlybraces'
 }
+
+task copyJarToBin {
+    copy {
+        from 'build/distributions/de.ibacg.intellij.folding.doublecurlybraces-1.0.zip'
+        into "."
+    }
+}
+
+task release {
+    dependsOn clean, org.jetbrains.intellij.IntelliJPlugin.BUILD_PLUGIN_TASK_NAME, copyJarToBin
+}
