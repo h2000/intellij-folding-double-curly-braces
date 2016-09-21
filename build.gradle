@@ -1,0 +1,38 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Buildscript
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+buildscript {
+  repositories {
+    maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
+  }
+}
+plugins {
+    id 'org.jetbrains.intellij' version "0.1.10"
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Projects
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'de.ibacg.intellij'
+version = '1.0'
+
+description = """"""
+
+sourceCompatibility = JAVA_VERSION
+targetCompatibility = JAVA_VERSION
+
+tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
+
+repositories {
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+
+intellij {
+    version = INTELLIJ_VERSION
+    plugins = []
+    pluginName = 'de.ibacg.intellij.folding.doublecurlybraces'
+}
